@@ -1,5 +1,12 @@
 @import './mat-snackbar-severity-common';
 
+$severity-is-dark-theme: false !default;
+
+$error-text-color: map-get($mat-red, A100);
+$warning-text-color: map-get($mat-orange, A100);
+$info-text-color: map-get($mat-blue, A100);
+$success-text-color: map-get($mat-green, A100);
+
 @mixin simple-snack-bar-button($color) {
   simple-snack-bar button {
     color: $color;
@@ -17,32 +24,46 @@
   @return $string;
 }
 
+@mixin severity-dark-theme($color) {
+  @if $severity-is-dark-theme {
+    color: $color;
+    background-color: #323232;
+  }
+}
+
 @include severity-container {
-  &.severity-error, &.severity-warning, &.severity-info, &.severity-success {
-    color: black;
-    background-color: white;
+
+  @if $severity-is-dark-theme == false {
+    &.severity-error, &.severity-warning, &.severity-info, &.severity-success {
+      color: black;
+      background-color: white;
+    }
   }
 
   @include severity-error(str-replace($error-color, '#', '%23')) {
     border: solid 1px $error-color;
+    @include severity-dark-theme($error-text-color);
 
     @include simple-snack-bar-button($error-color);
   }
 
   @include severity-warning(str-replace($warning-color, '#', '%23')) {
     border: solid 1px $warning-color;
+    @include severity-dark-theme($warning-text-color);
 
     @include simple-snack-bar-button($warning-color);
   }
   
   @include severity-info(str-replace($info-color, '#', '%23')) {
     border: solid 1px $info-color;
+    @include severity-dark-theme($info-text-color);
 
     @include simple-snack-bar-button($info-color);
   }
 
   @include severity-success(str-replace($success-color, '#', '%23')) {
     border: solid 1px $success-color;
+    @include severity-dark-theme($success-text-color);
 
     @include simple-snack-bar-button($success-color);
   }
