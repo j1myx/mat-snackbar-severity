@@ -1,7 +1,7 @@
 @import './mat-snackbar-severity-common';
 
 @include severity-container {
-  simple-snack-bar button {
+  simple-snack-bar button, simple-snack-bar span {
     color: white;
   }
 
