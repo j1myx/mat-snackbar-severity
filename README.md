@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
     const severity: SnackbarSeverity = 'success';
 
     this.snackBarSeverity.open(severity, 'Success Message', 'Ok', {
-        verticalPosition: 'bottom',
+        verticalPosition: 'top',
         horizontalPosition: 'right'
       });
 
