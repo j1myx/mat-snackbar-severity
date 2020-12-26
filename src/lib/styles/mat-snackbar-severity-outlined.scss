@@ -1,0 +1,49 @@
+@import './mat-snackbar-severity-common';
+
+@mixin simple-snack-bar-button($color) {
+  simple-snack-bar button {
+    color: $color;
+  }
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+@include severity-container {
+  &.severity-error, &.severity-warning, &.severity-info, &.severity-success {
+    color: black;
+    background-color: white;
+  }
+
+  @include severity-error(str-replace($error-color, '#', '%23')) {
+    border: solid 1px $error-color;
+
+    @include simple-snack-bar-button($error-color);
+  }
+
+  @include severity-warning(str-replace($warning-color, '#', '%23')) {
+    border: solid 1px $warning-color;
+
+    @include simple-snack-bar-button($warning-color);
+  }
+  
+  @include severity-info(str-replace($info-color, '#', '%23')) {
+    border: solid 1px $info-color;
+
+    @include simple-snack-bar-button($info-color);
+  }
+
+  @include severity-success(str-replace($success-color, '#', '%23')) {
+    border: solid 1px $success-color;
+
+    @include simple-snack-bar-button($success-color);
+  }
+
+}

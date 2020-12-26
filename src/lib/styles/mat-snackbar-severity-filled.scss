@@ -1,0 +1,24 @@
+@import './mat-snackbar-severity-common';
+
+@include severity-container {
+  simple-snack-bar button {
+    color: white;
+  }
+
+  @include severity-error {
+    background-color: $error-color;
+  }
+
+  @include severity-warning {
+    background-color: $warning-color;
+  }
+  
+  @include severity-info {
+    background-color: $info-color;
+  }
+
+  @include severity-success {
+    background-color: $success-color;
+  }
+
+}
