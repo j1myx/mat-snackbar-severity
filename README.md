@@ -35,12 +35,17 @@ Outlined Dark in the light theme:
 ## Install
 
 ```
+/* Be sure to import the material modules */
+npm i @angular/cdk@currentVersion
+npm i @angular/material@currentVersion
+
+/* Import library */
 npm i mat-snackbar-severity
 ```
 
 ## Examples code
 
-Import module:
+Import into the module to use:
 ```ts
 import { MatSnackbarSeverityModule } from 'mat-snackbar-severity';
 
@@ -59,6 +64,12 @@ export class AppModule { }
 ```
 Defined scss in global styles:
 ```scss
+/* Make sure you are importing the global mixin of material: */
+@include angular-material-theme($candy-app-theme);
+
+/* or in the case of using another theme then specify the following mixins: */
+@include mat-snack-bar-theme($candy-app-theme);
+@include mat-button-theme($candy-app-theme);
 
 /* design filled */
 @import '~mat-snackbar-severity/mat-snackbar-severity-filled';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar, TextOnlySnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 export declare type SnackbarSeverity = 'error' | 'warning' | 'info' | 'success';
 
@@ -12,11 +12,11 @@ export class MatSnackbarSeverity {
     private matSnackbar: MatSnackBar
   ) { }
 
-  open(severity: SnackbarSeverity, message: string, action?: string, config?: MatSnackBarConfig<any>): MatSnackBarRef<TextOnlySnackBar> {
+  open(severity: SnackbarSeverity, message: string, action?: string, config?: MatSnackBarConfig<any>): MatSnackBarRef<any> {
 
     const data = {
       message,
-      action,
+      action
     };
 
     return this.matSnackbar.openFromComponent(SimpleSnackBar, {
